@@ -25,7 +25,8 @@ function App() {
 
   return (
     <div className="app-bg">
-      <h1>Taylor Swanson</h1>
+      <h1>Taylor Swanson </h1>
+      <h1>International Vice President Division III</h1>
 
       <div className="profile-avatar" role="img" aria-label="Taylor Swanson profile" />
       <div className="card">
@@ -34,7 +35,7 @@ function App() {
         </p>
       </div>
       <p className="read-the-docs">
-        Please share your contact information and join my constellation.
+        Please share your contact information and join our constellation.
       </p>
       <ContactForm onSubmit={handleForm} />
       <Stars />

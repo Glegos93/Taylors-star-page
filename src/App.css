@@ -53,6 +53,11 @@
   }
 }
 
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
 .card {
   padding: 2em;
 }
@@ -99,6 +104,8 @@
   height: 20px;
   display: block;
   -webkit-user-drag: none;
+  animation: pulse var(--pulse-duration, 2s) ease-in-out infinite;
+  animation-delay: var(--pulse-delay, 0s);
 }
 .star:focus { outline: 2px solid rgba(255,255,255,0.6); }
 .star .tooltip {

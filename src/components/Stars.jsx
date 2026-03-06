@@ -80,7 +80,9 @@ export default function Stars() {
           const key = `${r.name || ''}|${r.email || ''}|${i}`;
           const x = hashToPercent(key, 1);
           const y = hashToPercent(key, 2);
-          return { ...r, x, y };
+          const pulseDuration = 1.5 + (hashToPercent(key, 3) * 0.01); // 1.5s to 2.5s
+          const pulseDelay = hashToPercent(key, 4) * 0.02; // 0s to 2s
+          return { ...r, x, y, pulseDuration, pulseDelay };
         });
         if (!cancelled) setStars(mapped);
       } catch (err) {
@@ -99,11 +101,19 @@ export default function Stars() {
 
   return (
     <div className="star-field" aria-hidden={false}>
-      {stars.map((s, i) => (
+      {stars.map((s, i) => {
+        const isLatest = i === 0; // first in array = most recent
+        const stableKey = `${s.name}|${s.email}|${s.submittedAt}`;
+        return (
         <div
-          key={i}
-          className="star"
-          style={{ left: `${s.x}%`, top: `${s.y}%` }}
+          key={stableKey}
+          className={`star ${isLatest ? 'star-latest' : ''}`}
+          style={{
+            left: `${s.x}%`,
+            top: `${s.y}%`,
+            '--pulse-duration': `${s.pulseDuration}s`,
+            '--pulse-delay': `${s.pulseDelay}s`,
+          }}
           tabIndex={0}
           aria-label={`${s.name} — ${s.chapter} — ${s.email}`}
         >
@@ -115,7 +125,8 @@ export default function Stars() {
             <div style={{ fontSize: 11, opacity: 0.8 }}>{s.submittedAt}</div>
           </span>
         </div>
-      ))}
+        );
+      })}
     </div>
   );
 }
