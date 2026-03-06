@@ -81,3 +81,41 @@
     height: 88px;
   }
 }
+
+/* star field */
+.star-field {
+  position: absolute;
+  inset: 0;
+  pointer-events: none; /* allow underlying interactions except stars */
+}
+.star {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  pointer-events: auto; /* re-enable hover for stars */
+  cursor: default;
+}
+.star-img {
+  width: 20px;
+  height: 20px;
+  display: block;
+  -webkit-user-drag: none;
+}
+.star:focus { outline: 2px solid rgba(255,255,255,0.6); }
+.star .tooltip {
+  display: none;
+  position: absolute;
+  left: 14px;
+  top: -6px;
+  min-width: 140px;
+  background: rgba(0,0,0,0.75);
+  color: #fff;
+  padding: 8px;
+  border-radius: 6px;
+  text-align: left;
+  z-index: 50;
+}
+.star:hover .tooltip,
+.star:focus .tooltip {
+  display: block;
+}
+
