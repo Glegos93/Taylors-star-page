@@ -5,6 +5,26 @@
   text-align: center;
 }
 
+.app-bg {
+  position: relative;
+  min-height: 100vh;               /* full viewport height */
+  width: 100%;                     /* ensure full width */
+  overflow: hidden;
+}
+
+/* full-bleed background that covers the whole viewport and sits behind content */
+.app-bg::before {
+  content: "";
+  position: fixed;
+  inset: 0; /* top:0; right:0; bottom:0; left:0 */
+  z-index: -1;
+  background-image: url('/bg.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover; /* or contain / 100% 100% */
+  background-attachment: fixed; /* optional: keeps image fixed while content scrolls */
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -38,5 +58,26 @@
 }
 
 .read-the-docs {
-  color: #888;
+  color: #fff;
+  text-shadow: 0 3px 10px rgba(0,0,0,0.7);
+  padding: 0.25rem 0.5rem;
+  background: rgba(0,0,0,0.18);
+  display: inline-block;
+  border-radius: 6px;
+}
+
+/* Profile avatar using an image from public/ */
+.profile-avatar {
+  width: 860px;
+  height: 680px;
+  margin: 12px auto;
+  background-image: url('/profile.png');
+  background-position: center;
+}
+
+@media (max-width: 480px) {
+  .profile-avatar {
+    width: 88px;
+    height: 88px;
+  }
 }

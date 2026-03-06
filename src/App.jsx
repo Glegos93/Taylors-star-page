@@ -11,16 +11,10 @@ function App() {
   };
 
   return (
-    <>
-      <div>
-        {/* <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a> */}
-      </div>
+    <div className="app-bg">
       <h1>Taylor Swanson</h1>
+
+      <div className="profile-avatar" role="img" aria-label="Taylor Swanson profile" />
       <div className="card">
         <p className="quote">
           "I'm legally blind"
@@ -30,7 +24,7 @@ function App() {
         Please share your contact information and join my constellation.
       </p>
       <ContactForm onSubmit={handleForm} />
-    </>
+    </div>
   )
 }
 
